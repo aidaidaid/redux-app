@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { deleteUser, editUser} from "./actionsUser";
+import { deleteUser, editUser} from "../redux/actionsUser";
 import { useHistory } from "react-router";
 
 const Users = ({usersList, editItem, deleteItem}) => {

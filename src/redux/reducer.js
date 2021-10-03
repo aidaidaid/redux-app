@@ -34,7 +34,7 @@ export const reducer = (state = initialState, action) => {
                 ...state,            
                 users: state.users.map((item)=>{
                 if (item.id == action.payload.userToEditId){
-                    return action.payloadı;
+                    return action.payload;
                 }
                 return item;
             })

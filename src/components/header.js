@@ -7,7 +7,6 @@ const Header = ({usersCount}) => {
         <div className='menu'>
             <Link to='/'>Home</Link>
             <Link to='/users'>Users: {usersCount}</Link>
-            {/* <span>{usersCount}</span> */}
         </div>
     )
 }

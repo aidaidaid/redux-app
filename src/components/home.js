@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { findDOMNode } from "react-dom";
 import { connect, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
-import { addUser, editUser, saveChange } from "./actionsUser";
+import { addUser, editUser, saveChange } from "../redux/actionsUser";
+// import { reducer } from "..redux/reducer";
 
 const Home = ({addUser, userInfo, myisToClean, saveChange}) => {
     const [name, setName] = useState(userInfo?.name);
@@ -18,7 +19,7 @@ const Home = ({addUser, userInfo, myisToClean, saveChange}) => {
     // const [age, setAge] = useState('');
     // const [gender, setGender] = useState('');
     const [userToEditId, setUserToEditId] = useState(userInfo?.id);
-    const [isToClean, setIsToClean] = useState(myisToClean);
+    const [isToClean, setIsToClean] = useState(myisToClean); //||0
     // setIsToClean(myisToClean);
 
     const history = useHistory();
@@ -28,6 +29,7 @@ const Home = ({addUser, userInfo, myisToClean, saveChange}) => {
     // }
 
     const handleAdd = (()=>{
+        // setIsToClean(isToClean + 1);
         myisToClean = myisToClean + 1;
         setIsToClean(myisToClean);
         addUser({
@@ -41,6 +43,7 @@ const Home = ({addUser, userInfo, myisToClean, saveChange}) => {
     })
 
     const handleSave = () => {
+        // setIsToClean(1);
         myisToClean = myisToClean + 1;
         setIsToClean(myisToClean);
         saveChange({
@@ -86,7 +89,7 @@ const Home = ({addUser, userInfo, myisToClean, saveChange}) => {
                 <input type='text' placeholder='Age' value={age} onChange={(e)=>(setAge(e.target.value))}/>
                 <input type='text' placeholder='Gender' value={gender} onChange={(e)=>(setGender(e.target.value))}/>
                 <button onClick={handleAdd} >Add</button>
-                <div className='changeBtns' style={{display: isToClean == 0? 'block' : 'none' }}>
+                <div className='changeBtns' style={{display: isToClean == 0 ? 'block' : 'none' }}>
                     <button onClick={handleSave}>Save</button>
                     <button onClick={handleCancel}>Cancel</button>
                 </div>
