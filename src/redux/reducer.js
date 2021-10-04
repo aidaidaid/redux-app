@@ -3,11 +3,10 @@ const initialState = {
     id: 1,
     count: 0,
     userToEdit: {},
-    isToClean: 1,
+    isToClean: null,
 }
 
 export const reducer = (state = initialState, action) => {
-    // console.log(state, 'oooo')
     switch(action.type) {
         case 'ADD_USER':
             action.payload.id = state.id;
@@ -16,6 +15,7 @@ export const reducer = (state = initialState, action) => {
                     users: [...state.users, action.payload],
                     id: state.id + 1,
                     count: state.count + 1,
+                    isToClean: state.isToClean + 1,
                 }
         case 'DELETE_USER':
             return {
@@ -30,8 +30,10 @@ export const reducer = (state = initialState, action) => {
                 isToClean: 0,
             }
         case 'SAVE_CHANGE':
+            action.payload.id = state.userToEdit.id;
             return {  
-                ...state,            
+                ...state,
+                isToClean: state.isToClean + 1,
                 users: state.users.map((item)=>{
                 if (item.id == action.payload.userToEditId){
                     return action.payload;
@@ -39,6 +41,11 @@ export const reducer = (state = initialState, action) => {
                 return item;
             })
         }
+        case 'CANCEL_EDIT':
+            return {
+                ...state,
+                isToClean: action.payload, 
+            }
         default:
         return state
     }

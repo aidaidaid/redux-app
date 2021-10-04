@@ -9,8 +9,6 @@ const Users = ({usersList, editItem, deleteItem}) => {
     const editInfo = ((id, isToClean)=>{
         history.push('/');
         editItem(id, isToClean);
-        // document.getElementById('changeBtns').style.display = 'block';
-        // console.log(document.getElementById('changeBtns').value);
     })
 
     return(
@@ -26,9 +24,7 @@ const Users = ({usersList, editItem, deleteItem}) => {
                         {item.gender && <div>Gender: {item.gender}</div>}
                     </div>
                     <div className='userBtns'>
-                        {/* <button onClick={()=>editItem(item.id)}>Edit</button> */}
                         <button onClick={()=>editInfo(item.id, 0)}>Edit</button>
-                        {/* <button onClick={()=>history.push('/')}>Edit</button> */}
                         <button onClick={()=>deleteItem(item.id)}>Delete</button>
                     </div>
                 </div>)
@@ -45,7 +41,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return({
-        editItem: (id, isToClean) => dispatch(editUser(id, isToClean)),
+        editItem: (id) => dispatch(editUser(id)),
         deleteItem: (id) => dispatch(deleteUser(id))
     })
 }

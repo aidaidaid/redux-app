@@ -25,3 +25,10 @@ export const saveChange = (data) => {
         payload: data,
     })
 }
+
+export const cancelEdit = (cancel) => {
+    return({
+        type: 'CANCEL_EDIT',
+        payload: cancel, 
+    })
+} 
