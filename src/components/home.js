@@ -79,7 +79,6 @@ const Home = ({addUser, userInfo, isToClean, saveChange, cancelEdit}) => {
                 <input type='text' placeholder='Nickname' value={nickname} onChange={(e)=>(setNickname(e.target.value))}/>
                 <input name='email' placeholder='Email' value={email} onChange={(e)=>(setEmail(e.target.value))}/>
                 <input type='text' placeholder='Age' value={age} onChange={(e)=>(setAge(e.target.value))}/>
-                {/* <input type='text' placeholder='Gender' value={gender} onChange={(e)=>(setGender(e.target.value))}/> */}
                 <select onChange={(e)=>(setGender(e.target.value))}>
                     <option value="" disabled selected hidden>Select gender</option>
                     <option>Male</option>
